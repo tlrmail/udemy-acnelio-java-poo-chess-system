@@ -1,15 +1,19 @@
 package application;
 
-import boardgame.Board;
-import boardgame.Position;
+import boardgame.exceptions.BoardException;
 import chess.ChessMatch;
 
 public class Sistema {
 
 	public static void main(String[] args) {
 
-		ChessMatch chessMatch = new ChessMatch();
-		UI.printBoard(chessMatch.getPieces());
-	
+		try {
+			ChessMatch chessMatch = new ChessMatch();
+			UI.printBoard(chessMatch.getPieces());
+		} catch (BoardException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+
 	}
 }
