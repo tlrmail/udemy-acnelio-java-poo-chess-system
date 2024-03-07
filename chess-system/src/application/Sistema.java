@@ -1,5 +1,6 @@
 package application;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import boardgame.exceptions.BoardException;
@@ -17,6 +18,7 @@ public class Sistema {
 		try {
 			ChessMatch chessMatch = new ChessMatch();
 			while(true) {
+				UI.clearScreen();
 				UI.printBoard(chessMatch.getPieces());
 				System.out.println();
 				System.out.print("Source: ");
@@ -31,7 +33,10 @@ public class Sistema {
 			}
 		} catch (BoardException e) {
 			System.out.println(e.getMessage());
-			e.printStackTrace();
+			sc.nextLine();
+		}catch(InputMismatchException e) {
+			System.out.println(e.getMessage());
+			sc.nextLine();
 		}finally {
 			sc.close();
 		}
